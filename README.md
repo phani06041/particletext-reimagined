@@ -6,10 +6,12 @@ A standalone, dependency-free particle text landing page inspired by the Particl
 
 - Interactive particle text rendered on HTML canvas
 - Mouse and touch repulsion with spring-back motion
-- Live text editing and density control
-- Theme presets with one-click shuffling
-- Automatic showcase word cycling
+- Live text editing, preset chips, density tuning, glow control, and pointer radius control
+- Theme presets, theme shuffling, constellation links, and ambient background particles
+- Trigger burst effect for a quick motion accent
 - Responsive layout suitable for desktop and mobile
+- Automatic GitHub Pages deployment via GitHub Actions
+- Custom SVG favicon
 
 ## Run locally
 
@@ -23,6 +25,18 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-## Deploy
+## Deploy on GitHub Pages
 
-This project is well suited for GitHub Pages. Push the files to your repository and enable Pages for the branch you want to publish.
+The repository includes `.github/workflows/deploy.yml` for Pages deployment.
+
+1. Push to `main`
+2. In GitHub, open `Settings > Pages`
+3. Set `Source` to `GitHub Actions`
+4. The workflow will publish the site automatically on future pushes
+
+## Project Files
+
+- `index.html` for structure
+- `styles.css` for layout and visual treatment
+- `app.js` for the particle engine and controls
+- `favicon.svg` for browser branding

@@ -8,40 +8,50 @@
       name="description"
       content="Interactive particle text experience built with vanilla JavaScript."
     />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="page-shell">
       <header class="topbar">
         <div>
-          <p class="eyebrow">Canvas Experiment</p>
+          <p class="eyebrow">Interactive Canvas Demo</p>
           <h1>ParticleText Reimagined</h1>
         </div>
-        <button id="shuffleButton" class="ghost-button" type="button">
-          Shuffle Theme
-        </button>
+        <div class="topbar-actions">
+          <a
+            class="ghost-button"
+            href="https://github.com/phani06041/particletext-reimagined"
+            target="_blank"
+            rel="noreferrer"
+            >View Repo</a
+          >
+          <button id="shuffleButton" class="ghost-button" type="button">
+            Shuffle Theme
+          </button>
+        </div>
       </header>
 
       <main class="hero-grid">
         <section class="copy-panel">
           <p class="lead">
-            A fresh rebuild of the ParticleText idea with stronger motion,
-            touch support, live editing, theme presets, and animated word
-            cycling.
+            A rebuilt ParticleText experience with live editing, stronger
+            motion, theme presets, constellation links, ambient background
+            particles, and one-click GitHub Pages deployment support.
           </p>
 
           <div class="stats-strip" aria-label="Feature highlights">
             <article>
-              <strong>60fps-minded</strong>
-              <span>spring return physics and capped density</span>
+              <strong id="particleCount">0 particles</strong>
+              <span>auto-balanced density for smoother performance</span>
             </article>
             <article>
-              <strong>Touch aware</strong>
-              <span>works with pointer and touch interactions</span>
+              <strong id="fpsHint">interactive motion</strong>
+              <span>pointer repulsion, spring return, and subtle trails</span>
             </article>
             <article>
-              <strong>Editable live</strong>
-              <span>change the text, colors, and motion in real time</span>
+              <strong>mobile ready</strong>
+              <span>responsive layout with touch-friendly controls</span>
             </article>
           </div>
 
@@ -58,6 +68,21 @@
               />
             </label>
 
+            <div class="chip-row" aria-label="Quick text presets">
+              <button class="chip" type="button" data-word="PHANINDRA">
+                PHANINDRA
+              </button>
+              <button class="chip" type="button" data-word="PARTICLES">
+                PARTICLES
+              </button>
+              <button class="chip" type="button" data-word="MADMAXX">
+                MADMAXX
+              </button>
+              <button class="chip" type="button" data-word="GITHUB">
+                GITHUB
+              </button>
+            </div>
+
             <div class="control-row">
               <label>
                 Theme
@@ -71,9 +96,37 @@
                   name="density"
                   type="range"
                   min="4"
-                  max="10"
+                  max="11"
                   step="1"
                   value="6"
+                />
+              </label>
+            </div>
+
+            <div class="control-row">
+              <label>
+                Pointer Radius
+                <input
+                  id="radiusInput"
+                  name="radius"
+                  type="range"
+                  min="70"
+                  max="170"
+                  step="5"
+                  value="110"
+                />
+              </label>
+
+              <label>
+                Glow Intensity
+                <input
+                  id="glowInput"
+                  name="glow"
+                  type="range"
+                  min="20"
+                  max="100"
+                  step="5"
+                  value="55"
                 />
               </label>
             </div>
@@ -84,7 +137,17 @@
                 <span>Auto-cycle showcase words</span>
               </label>
 
+              <label class="toggle">
+                <input id="linksToggle" type="checkbox" checked />
+                <span>Show constellation links</span>
+              </label>
+            </div>
+
+            <div class="control-row">
               <button class="primary-button" type="submit">Redraw</button>
+              <button id="burstButton" class="ghost-button" type="button">
+                Trigger Burst
+              </button>
             </div>
           </form>
         </section>
