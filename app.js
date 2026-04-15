@@ -381,6 +381,7 @@ controlsForm.addEventListener("submit", (event) => {
 
 textInput.addEventListener("input", () => {
   stopAutoCycle();
+  updateText(textInput.value);
 });
 
 themeSelect.addEventListener("change", () => {
