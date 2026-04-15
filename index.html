@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParticleText Reimagined</title>
+    <meta
+      name="description"
+      content="Interactive particle text experience built with vanilla JavaScript."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Canvas Experiment</p>
+          <h1>ParticleText Reimagined</h1>
+        </div>
+        <button id="shuffleButton" class="ghost-button" type="button">
+          Shuffle Theme
+        </button>
+      </header>
+
+      <main class="hero-grid">
+        <section class="copy-panel">
+          <p class="lead">
+            A fresh rebuild of the ParticleText idea with stronger motion,
+            touch support, live editing, theme presets, and animated word
+            cycling.
+          </p>
+
+          <div class="stats-strip" aria-label="Feature highlights">
+            <article>
+              <strong>60fps-minded</strong>
+              <span>spring return physics and capped density</span>
+            </article>
+            <article>
+              <strong>Touch aware</strong>
+              <span>works with pointer and touch interactions</span>
+            </article>
+            <article>
+              <strong>Editable live</strong>
+              <span>change the text, colors, and motion in real time</span>
+            </article>
+          </div>
+
+          <form id="controls" class="control-card">
+            <label>
+              Display Text
+              <input
+                id="textInput"
+                name="text"
+                type="text"
+                maxlength="18"
+                value="PHANINDRA"
+                autocomplete="off"
+              />
+            </label>
+
+            <div class="control-row">
+              <label>
+                Theme
+                <select id="themeSelect" name="theme"></select>
+              </label>
+
+              <label>
+                Density
+                <input
+                  id="densityInput"
+                  name="density"
+                  type="range"
+                  min="4"
+                  max="10"
+                  step="1"
+                  value="6"
+                />
+              </label>
+            </div>
+
+            <div class="control-row">
+              <label class="toggle">
+                <input id="cycleToggle" type="checkbox" checked />
+                <span>Auto-cycle showcase words</span>
+              </label>
+
+              <button class="primary-button" type="submit">Redraw</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="canvas-panel">
+          <div class="canvas-frame">
+            <canvas
+              id="particleCanvas"
+              aria-label="Interactive particle text animation"
+            ></canvas>
+            <div class="canvas-overlay">
+              <p>Move your cursor through the text</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
