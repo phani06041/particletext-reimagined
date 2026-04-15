@@ -217,7 +217,7 @@ function createAmbientParticles() {
 }
 
 function rebuildParticles() {
-  const text = state.text;
+  const text = state.text.trim();
   const { particles } = themes[state.themeIndex];
   const width = canvas.clientWidth;
   const height = canvas.clientHeight;
@@ -334,8 +334,9 @@ function animate(now = performance.now()) {
 }
 
 function updateText(nextText) {
-  state.text = (nextText || "").trim().slice(0, 18);
-  textInput.value = state.text;
+  const rawText = (nextText || "").slice(0, 18);
+  state.text = rawText;
+  textInput.value = rawText;
   rebuildParticles();
 }
 
