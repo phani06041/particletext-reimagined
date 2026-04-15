@@ -120,6 +120,13 @@ If you want to keep evolving the project, good next upgrades would be:
 - mobile-specific performance tuning
 - a 3D depth layer or faux perspective effect
 - downloadable screenshots or recorded loops
+---
+
+## 👤 Author
+
+**Phanindra AKA Maxx** — Built with ❤️ · Local & Free
+
+---
 
 ## License
 
