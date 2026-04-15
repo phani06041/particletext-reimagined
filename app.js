@@ -53,6 +53,10 @@ const burstButton = document.querySelector("#burstButton");
 const particleCount = document.querySelector("#particleCount");
 const fpsHint = document.querySelector("#fpsHint");
 const chips = document.querySelectorAll(".chip");
+const sidebar = document.querySelector("#sidebar");
+const openSidebarButton = document.querySelector("#openSidebar");
+const closeSidebarButton = document.querySelector("#closeSidebar");
+const sidebarBackdrop = document.querySelector("#sidebarBackdrop");
 
 const pointer = {
   active: false,
@@ -62,7 +66,7 @@ const pointer = {
 };
 
 const state = {
-  text: textInput.value.trim() || "PHANINDRA",
+  text: textInput.value.trim(),
   density: Number(densityInput.value),
   themeIndex: 0,
   particles: [],
@@ -168,6 +172,18 @@ function updateStats(text) {
   fpsHint.textContent = text;
 }
 
+function openSidebar() {
+  sidebar.classList.add("is-open");
+  sidebarBackdrop.classList.add("is-visible");
+  sidebar.setAttribute("aria-hidden", "false");
+}
+
+function closeSidebar() {
+  sidebar.classList.remove("is-open");
+  sidebarBackdrop.classList.remove("is-visible");
+  sidebar.setAttribute("aria-hidden", "true");
+}
+
 function resizeCanvas() {
   const ratio = window.devicePixelRatio || 1;
   const width = canvas.clientWidth;
@@ -201,10 +217,17 @@ function createAmbientParticles() {
 }
 
 function rebuildParticles() {
-  const text = state.text || "PHANINDRA";
+  const text = state.text;
   const { particles } = themes[state.themeIndex];
   const width = canvas.clientWidth;
   const height = canvas.clientHeight;
+
+  if (!text) {
+    state.particles = [];
+    updateStats("type to generate particles");
+    return;
+  }
+
   const offscreen = document.createElement("canvas");
   offscreen.width = width;
   offscreen.height = height;
@@ -289,7 +312,7 @@ function renderAmbient() {
 function updateFpsHint(now) {
   state.frameCount += 1;
   if (now - state.fpsLastTick > 1000) {
-    updateStats(`${state.frameCount} fps snapshot`);
+    updateStats(state.text ? `${state.frameCount} fps snapshot` : "type to generate particles");
     state.frameCount = 0;
     state.fpsLastTick = now;
   }
@@ -311,7 +334,7 @@ function animate(now = performance.now()) {
 }
 
 function updateText(nextText) {
-  state.text = (nextText || "").trim().slice(0, 18) || "PHANINDRA";
+  state.text = (nextText || "").trim().slice(0, 18);
   textInput.value = state.text;
   rebuildParticles();
 }
@@ -333,6 +356,11 @@ function stopAutoCycle() {
     window.clearInterval(state.cycleId);
     state.cycleId = 0;
   }
+}
+
+function disableAutoCycle() {
+  cycleToggle.checked = false;
+  stopAutoCycle();
 }
 
 function setPointerPosition(event) {
@@ -364,6 +392,15 @@ animate();
 startAutoCycle();
 
 window.addEventListener("resize", resizeCanvas);
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeSidebar();
+  }
+});
+
+openSidebarButton.addEventListener("click", openSidebar);
+closeSidebarButton.addEventListener("click", closeSidebar);
+sidebarBackdrop.addEventListener("click", closeSidebar);
 
 canvas.addEventListener("pointermove", setPointerPosition);
 canvas.addEventListener("pointerdown", setPointerPosition);
@@ -377,10 +414,11 @@ controlsForm.addEventListener("submit", (event) => {
   pointer.radius = Number(radiusInput.value);
   state.glowStrength = Number(glowInput.value) / 100;
   updateText(textInput.value);
+  closeSidebar();
 });
 
 textInput.addEventListener("input", () => {
-  stopAutoCycle();
+  disableAutoCycle();
   updateText(textInput.value);
 });
 
@@ -424,8 +462,8 @@ burstButton.addEventListener("click", burstParticles);
 
 for (const chip of chips) {
   chip.addEventListener("click", () => {
-    stopAutoCycle();
-    updateText(chip.dataset.word || chip.textContent || "PHANINDRA");
+    disableAutoCycle();
+    updateText(chip.dataset.word || chip.textContent || "");
   });
 }
 
@@ -435,6 +473,8 @@ document.addEventListener("visibilitychange", () => {
     stopAutoCycle();
   } else {
     animate();
-    startAutoCycle();
+    if (cycleToggle.checked) {
+      startAutoCycle();
+    }
   }
 });

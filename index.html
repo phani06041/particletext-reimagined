@@ -12,52 +12,154 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Interactive Canvas Demo</p>
-          <h1>ParticleText Reimagined</h1>
-        </div>
-        <div class="topbar-actions">
-          <a
-            class="ghost-button"
-            href="https://github.com/phani06041/particletext-reimagined"
-            target="_blank"
-            rel="noreferrer"
-            >View Repo</a
-          >
-          <button id="shuffleButton" class="ghost-button" type="button">
-            Shuffle Theme
+    <div class="app-shell">
+      <aside id="sidebar" class="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+          <div>
+            <p class="eyebrow">Control Panel</p>
+            <h2>Customize the motion</h2>
+          </div>
+          <button id="closeSidebar" class="icon-button" type="button" aria-label="Close sidebar">
+            <span></span>
+            <span></span>
           </button>
         </div>
-      </header>
 
-      <main class="hero-grid">
-        <section class="copy-panel">
-          <p class="lead">
-            A rebuilt ParticleText experience with live editing, stronger
-            motion, theme presets, constellation links, ambient background
-            particles, and one-click GitHub Pages deployment support.
-          </p>
+        <div class="stats-strip" aria-label="Feature highlights">
+          <article>
+            <strong id="particleCount">0 particles</strong>
+            <span>auto-balanced density for smoother performance</span>
+          </article>
+          <article>
+            <strong id="fpsHint">interactive motion</strong>
+            <span>pointer repulsion, spring return, and subtle trails</span>
+          </article>
+          <article>
+            <strong>mobile ready</strong>
+            <span>responsive layout with touch-friendly controls</span>
+          </article>
+        </div>
 
-          <div class="stats-strip" aria-label="Feature highlights">
-            <article>
-              <strong id="particleCount">0 particles</strong>
-              <span>auto-balanced density for smoother performance</span>
-            </article>
-            <article>
-              <strong id="fpsHint">interactive motion</strong>
-              <span>pointer repulsion, spring return, and subtle trails</span>
-            </article>
-            <article>
-              <strong>mobile ready</strong>
-              <span>responsive layout with touch-friendly controls</span>
-            </article>
+        <form id="controls" class="control-card">
+          <div class="control-row">
+            <label>
+              Theme
+              <select id="themeSelect" name="theme"></select>
+            </label>
+
+            <label>
+              Density
+              <input
+                id="densityInput"
+                name="density"
+                type="range"
+                min="4"
+                max="11"
+                step="1"
+                value="6"
+              />
+            </label>
           </div>
 
-          <form id="controls" class="control-card">
+          <div class="control-row">
             <label>
-              Display Text
+              Pointer Radius
+              <input
+                id="radiusInput"
+                name="radius"
+                type="range"
+                min="70"
+                max="170"
+                step="5"
+                value="110"
+              />
+            </label>
+
+            <label>
+              Glow Intensity
+              <input
+                id="glowInput"
+                name="glow"
+                type="range"
+                min="20"
+                max="100"
+                step="5"
+                value="55"
+              />
+            </label>
+          </div>
+
+          <div class="control-row control-row-stack">
+            <label class="toggle">
+              <input id="cycleToggle" type="checkbox" checked />
+              <span>Auto-cycle showcase words</span>
+            </label>
+
+            <label class="toggle">
+              <input id="linksToggle" type="checkbox" checked />
+              <span>Show constellation links</span>
+            </label>
+          </div>
+
+          <div class="control-row">
+            <button class="primary-button" type="submit">Redraw</button>
+            <button id="burstButton" class="ghost-button" type="button">
+              Trigger Burst
+            </button>
+          </div>
+        </form>
+      </aside>
+
+      <button id="sidebarBackdrop" class="sidebar-backdrop" type="button" aria-label="Close sidebar"></button>
+
+      <div class="page-shell">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button id="openSidebar" class="menu-button" type="button" aria-label="Open sidebar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div class="headline-block">
+              <p class="eyebrow">Interactive Canvas Demo</p>
+              <div class="headline-row">
+                <h1>ParticleText Reimagined</h1>
+                <p class="lead-inline">
+                  Real-time particle text with live typing, ambient glow, cursor repulsion,
+                  and a cleaner control-first layout.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="topbar-actions">
+            <a
+              class="ghost-button"
+              href="https://github.com/phani06041/particletext-reimagined"
+              target="_blank"
+              rel="noreferrer"
+              >View Repo</a
+            >
+            <button id="shuffleButton" class="ghost-button" type="button">
+              Shuffle Theme
+            </button>
+          </div>
+        </header>
+
+        <main class="main-stage">
+          <section class="canvas-panel">
+            <div class="canvas-frame">
+              <canvas
+                id="particleCanvas"
+                aria-label="Interactive particle text animation"
+              ></canvas>
+              <div class="canvas-overlay">
+                <p>Move your cursor through the text</p>
+              </div>
+            </div>
+
+            <section class="composer-panel">
+              <label class="composer-label" for="textInput">Display Text</label>
               <input
                 id="textInput"
                 name="text"
@@ -65,105 +167,19 @@
                 maxlength="18"
                 value="PHANINDRA"
                 autocomplete="off"
+                placeholder="Type anything..."
               />
-            </label>
 
-            <div class="chip-row" aria-label="Quick text presets">
-              <button class="chip" type="button" data-word="PHANINDRA">
-                PHANINDRA
-              </button>
-              <button class="chip" type="button" data-word="PARTICLES">
-                PARTICLES
-              </button>
-              <button class="chip" type="button" data-word="MADMAXX">
-                MADMAXX
-              </button>
-              <button class="chip" type="button" data-word="GITHUB">
-                GITHUB
-              </button>
-            </div>
-
-            <div class="control-row">
-              <label>
-                Theme
-                <select id="themeSelect" name="theme"></select>
-              </label>
-
-              <label>
-                Density
-                <input
-                  id="densityInput"
-                  name="density"
-                  type="range"
-                  min="4"
-                  max="11"
-                  step="1"
-                  value="6"
-                />
-              </label>
-            </div>
-
-            <div class="control-row">
-              <label>
-                Pointer Radius
-                <input
-                  id="radiusInput"
-                  name="radius"
-                  type="range"
-                  min="70"
-                  max="170"
-                  step="5"
-                  value="110"
-                />
-              </label>
-
-              <label>
-                Glow Intensity
-                <input
-                  id="glowInput"
-                  name="glow"
-                  type="range"
-                  min="20"
-                  max="100"
-                  step="5"
-                  value="55"
-                />
-              </label>
-            </div>
-
-            <div class="control-row">
-              <label class="toggle">
-                <input id="cycleToggle" type="checkbox" checked />
-                <span>Auto-cycle showcase words</span>
-              </label>
-
-              <label class="toggle">
-                <input id="linksToggle" type="checkbox" checked />
-                <span>Show constellation links</span>
-              </label>
-            </div>
-
-            <div class="control-row">
-              <button class="primary-button" type="submit">Redraw</button>
-              <button id="burstButton" class="ghost-button" type="button">
-                Trigger Burst
-              </button>
-            </div>
-          </form>
-        </section>
-
-        <section class="canvas-panel">
-          <div class="canvas-frame">
-            <canvas
-              id="particleCanvas"
-              aria-label="Interactive particle text animation"
-            ></canvas>
-            <div class="canvas-overlay">
-              <p>Move your cursor through the text</p>
-            </div>
-          </div>
-        </section>
-      </main>
+              <div class="chip-row" aria-label="Quick text presets">
+                <button class="chip" type="button" data-word="PHANINDRA">PHANINDRA</button>
+                <button class="chip" type="button" data-word="PARTICLES">PARTICLES</button>
+                <button class="chip" type="button" data-word="MADMAXX">MADMAXX</button>
+                <button class="chip" type="button" data-word="GITHUB">GITHUB</button>
+              </div>
+            </section>
+          </section>
+        </main>
+      </div>
     </div>
 
     <script src="./app.js"></script>
