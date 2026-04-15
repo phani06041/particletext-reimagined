@@ -1,19 +1,32 @@
 # ParticleText Reimagined
 
-An interactive particle-text experience built with vanilla JavaScript and the HTML5 Canvas API. No frameworks, no build step, and no dependencies — just a fast, lightweight front end designed to feel playful, polished, and easy to deploy.
+[![Live Site](https://img.shields.io/badge/live-demo-42f5b9?style=for-the-badge&logo=githubpages&logoColor=041019)](https://phani06041.github.io/particletext-reimagined/)
+[![Vanilla JS](https://img.shields.io/badge/vanilla-javascript-f7df1e?style=for-the-badge&logo=javascript&logoColor=111111)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Canvas](https://img.shields.io/badge/rendering-html5%20canvas-ff6b6b?style=for-the-badge&logo=html5&logoColor=ffffff)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
+[![GitHub Pages](https://img.shields.io/badge/deploy-github%20pages-0b1528?style=for-the-badge&logo=github&logoColor=ffffff)](https://github.com/phani06041/particletext-reimagined/actions)
+
+A polished, interactive particle-text experience built with vanilla JavaScript and the HTML5 Canvas API. No frameworks, no build step, and no dependencies — just a lightweight front end that feels playful, fast, and instantly deployable.
+
+![ParticleText Reimagined preview](./preview-card.svg)
+
+## Why This Project Exists
+
+This project started as a rebuild inspired by the ParticleText idea, but the goal was not just to copy the effect. The aim was to turn it into a cleaner, more presentable demo with stronger visual polish, better interactivity, GitHub-ready deployment, and a landing page feel that is easy to share publicly.
+
+It is designed to be approachable for beginners, lightweight for quick experiments, and visually strong enough to work as a portfolio-style front-end canvas project.
 
 ## Overview
 
 ParticleText Reimagined turns text into a living field of animated particles. Type into the interface and the canvas redraws your words as a glowing particle formation. Move your cursor through the composition to push particles away, switch between color themes, adjust the interaction feel, and trigger a burst animation for a more dramatic effect.
 
-The project is built as a static site, so it runs locally with a simple file open or a tiny local server and deploys cleanly to GitHub Pages.
+Because the project is fully static, it runs locally with a simple file open or a tiny local server and deploys cleanly to GitHub Pages.
 
 ## Live Demo
 
 - Site: https://phani06041.github.io/particletext-reimagined/
 - Repo: https://github.com/phani06041/particletext-reimagined
 
-## Features
+## Feature Highlights
 
 - Interactive particle text rendered on an HTML5 canvas
 - Real-time text redraw with editable input
@@ -21,11 +34,11 @@ The project is built as a static site, so it runs locally with a simple file ope
 - Theme presets with one-click shuffling
 - Adjustable particle density, pointer radius, and glow intensity
 - Optional constellation-style links between nearby particles
-- Ambient background particle layer for added depth
+- Ambient background particle layer for extra depth
 - Quick text preset chips for instant demos
 - Burst interaction for a fast scatter-and-return effect
 - Responsive layout for desktop and mobile screens
-- Custom SVG favicon
+- Custom SVG favicon and branded project preview art
 - Automatic deployment through GitHub Pages
 
 ## Controls
@@ -87,6 +100,7 @@ particletext-reimagined/
 ├── app.js
 ├── favicon.svg
 ├── index.html
+├── preview-card.svg
 ├── README.md
 └── styles.css
 ```
@@ -111,15 +125,16 @@ This repo already includes a GitHub Pages workflow.
 3. In `Pages`, set `Source` to `GitHub Actions`
 4. GitHub will publish the site automatically on future pushes
 
-## Customization Ideas
+## Future Ideas
 
-If you want to keep evolving the project, good next upgrades would be:
+Good next upgrades for this project would be:
 
-- smoother text transitions between words
+- smoother text-to-text morphing transitions
 - exportable theme presets
 - mobile-specific performance tuning
-- a 3D depth layer or faux perspective effect
-- downloadable screenshots or recorded loops
+- a faux-3D or layered depth effect
+- downloadable screenshots or loop captures
+
 ---
 
 ## 👤 Author

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">ParticleText Reimagined Preview</title>
+  <desc id="desc">Gradient showcase card for the ParticleText Reimagined project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06101d" />
+      <stop offset="55%" stop-color="#0b1830" />
+      <stop offset="100%" stop-color="#13223d" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9effd2" />
+      <stop offset="100%" stop-color="#42f5b9" />
+    </linearGradient>
+    <radialGradient id="glowA" cx="25%" cy="18%" r="45%">
+      <stop offset="0%" stop-color="#42f5b9" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#42f5b9" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx="80%" cy="25%" r="38%">
+      <stop offset="0%" stop-color="#5cf2ff" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#5cf2ff" stop-opacity="0" />
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" rx="36" />
+  <rect width="1200" height="630" fill="url(#glowA)" rx="36" />
+  <rect width="1200" height="630" fill="url(#glowB)" rx="36" />
+
+  <g opacity="0.16" stroke="#dffcff">
+    <path d="M0 100H1200" />
+    <path d="M0 180H1200" />
+    <path d="M0 260H1200" />
+    <path d="M0 340H1200" />
+    <path d="M0 420H1200" />
+    <path d="M0 500H1200" />
+    <path d="M120 0V630" />
+    <path d="M240 0V630" />
+    <path d="M360 0V630" />
+    <path d="M480 0V630" />
+    <path d="M600 0V630" />
+    <path d="M720 0V630" />
+    <path d="M840 0V630" />
+    <path d="M960 0V630" />
+    <path d="M1080 0V630" />
+  </g>
+
+  <g font-family="Avenir Next, Segoe UI, Arial, sans-serif" fill="#effbfd">
+    <text x="86" y="118" font-size="26" letter-spacing="8" fill="#9effd2">INTERACTIVE CANVAS DEMO</text>
+    <text x="84" y="222" font-size="86" font-weight="800">ParticleText</text>
+    <text x="84" y="308" font-size="86" font-weight="800">Reimagined</text>
+    <text x="88" y="380" font-size="28" fill="#c0d3e6">Vanilla JavaScript particle text with live controls, themes, glow,</text>
+    <text x="88" y="418" font-size="28" fill="#c0d3e6">ambient motion, burst effects, and GitHub Pages deployment.</text>
+  </g>
+
+  <g transform="translate(720 110)">
+    <rect width="380" height="400" rx="28" fill="#0b1528" fill-opacity="0.74" stroke="#ffffff" stroke-opacity="0.1" />
+    <g filter="url(#soft)">
+      <circle cx="192" cy="184" r="110" fill="#42f5b9" fill-opacity="0.14" />
+    </g>
+    <g fill="#9effd2">
+      <circle cx="108" cy="158" r="6" />
+      <circle cx="128" cy="138" r="5" />
+      <circle cx="148" cy="154" r="6" />
+      <circle cx="170" cy="138" r="5" />
+      <circle cx="188" cy="160" r="6" />
+      <circle cx="214" cy="136" r="5" />
+      <circle cx="236" cy="156" r="6" />
+      <circle cx="258" cy="138" r="5" />
+      <circle cx="278" cy="156" r="6" />
+
+      <circle cx="118" cy="204" r="6" />
+      <circle cx="142" cy="226" r="5" />
+      <circle cx="168" cy="204" r="6" />
+      <circle cx="192" cy="226" r="5" />
+      <circle cx="216" cy="204" r="6" />
+      <circle cx="240" cy="226" r="5" />
+      <circle cx="266" cy="204" r="6" />
+
+      <circle cx="126" cy="274" r="6" />
+      <circle cx="152" cy="250" r="5" />
+      <circle cx="178" cy="276" r="6" />
+      <circle cx="202" cy="252" r="5" />
+      <circle cx="226" cy="276" r="6" />
+      <circle cx="250" cy="252" r="5" />
+      <circle cx="274" cy="276" r="6" />
+    </g>
+    <g stroke="#d9fbff" stroke-opacity="0.16">
+      <path d="M108 158L128 138L148 154L170 138L188 160L214 136L236 156L258 138L278 156" />
+      <path d="M118 204L142 226L168 204L192 226L216 204L240 226L266 204" />
+      <path d="M126 274L152 250L178 276L202 252L226 276L250 252L274 276" />
+    </g>
+    <text x="36" y="352" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="22" fill="#b8cbdd">Live text controls</text>
+    <text x="36" y="380" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="22" fill="#b8cbdd">Burst interaction</text>
+    <text x="220" y="352" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="22" fill="#b8cbdd">Theme shuffle</text>
+    <text x="220" y="380" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="22" fill="#b8cbdd">Responsive canvas</text>
+  </g>
+</svg>
